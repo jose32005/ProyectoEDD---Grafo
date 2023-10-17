@@ -37,6 +37,7 @@ public class main {
 
         
         miGrafo.imprimirGrafo();
+        miGrafo.imprimirSCCs();
         //miGrafo.transpuesto().imprimirGrafo();
         //miGrafo.imprimirSCCs();
   

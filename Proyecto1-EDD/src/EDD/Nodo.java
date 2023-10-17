@@ -14,8 +14,8 @@ package EDD;
 public class Nodo<T> {
 
     private T tInfo;
-    private Nodo<T> pSig;
-    private Lista<T> adyacentes; // Lista de nodos adyacente
+    private Nodo<T> pSig; // Proximo nodo
+    private Lista<T> adyacentes; // Lista de nodos adyacentes
 
     //Constructor
     public Nodo(T elem) {

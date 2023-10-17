@@ -26,7 +26,6 @@ public class Grafo<T> {
         Nodo<T> nodoExistente = listaNodos.obtenerNodo((String) info);
         if (nodoExistente != null) {
             System.out.println("Ya existe un nodo bajo el usuario: " + info + ". No se puede agregar otro.");
-            return;
         } else {
             listaNodos.insertar(info);
             numVertices++;
@@ -96,9 +95,8 @@ public class Grafo<T> {
 
         nodoOrigen.getAdyacentes().eliminar(infoDestino);
     }
-    
-    // Metodos adaptados
 
+    // Metodos adaptados
     //Metodo que imprime el grafo
     public void imprimirGrafo() {
         System.out.println("El grafo contiene " + numVertices + " vértices: \n");
@@ -120,129 +118,94 @@ public class Grafo<T> {
         }
         System.out.println("FIN");
     }
-    
-    
-    //Kosaraju + fuerte y poderoso.
-    
-    //Devuelve el grafo con las aristas invertidas
-    public Grafo transpuesto() {
-        Grafo grafoTranspuesto = new Grafo();
-        
-        //Recorre la lista de vertices
-        Nodo <T> aux = listaNodos.getpPrim();
 
-        // Crear los nodos en el grafo transpuesto
-        while (aux != null) {
-            grafoTranspuesto.agregarNodo(aux.gettInfo());
-            aux = aux.getpSig();
-        }
-        
-        aux = listaNodos.getpPrim();
-
-        // Conectar los nodos en el grafo transpuesto inversamente
-        while (aux != null) {
-            //Inicializamos un nodo que apunta al primer nodo de la lista adyacente (Lista de relaciones)
-            Nodo <T> adyacente = aux.getAdyacentes().getpPrim();
-            while (adyacente != null) {
-                // Conectar el nodo adyacente en sentido inverso
-                grafoTranspuesto.conectarNodos(adyacente.gettInfo(), aux.gettInfo());
-                adyacente = adyacente.getpSig();
-            }
-            //El nodo auxiliar toma la lista adyacente del siguiente vertice
-            aux = aux.getpSig();
-        }
-
-        return grafoTranspuesto;
+    public Nodo<T> obtenerNodo(T info) {
+        return (Nodo<T>) listaNodos.obtenerNodo(info);
     }
 
-    // lo use como guia para ver como se hace el dfs
-    public void recorrerGrafo() {
-        // Lista para rastrear nodos visitados, OJO: Es posible mejorarlo
-        Lista <T> visitados = new Lista <>();
+    //Paso 1: Crear el set
+    public Pila<Nodo<T>> obtenerOrden() {
+        Conjunto<Nodo<T>> visitados = new Conjunto<>();
+        Pila<Nodo<T>> pila = new Pila<>();
 
-        // Stack para el orden topológico
-        Pila <T> pilaOrden = new Pila<>();
-
-        // Recorre todos los nodos en el grafo
-        Nodo <T> nodoActual = listaNodos.getpPrim();
+        Nodo<T> nodoActual = (Nodo<T>) listaNodos.primero();
         while (nodoActual != null) {
-            if (!contiene(visitados, nodoActual.gettInfo())) {
-                System.out.println("Nodo actual: " + nodoActual.gettInfo());
-                recorrerDFS(nodoActual, visitados, pilaOrden);
+            if (!visitados.contiene(nodoActual)) {
+                llenarOrden(nodoActual, visitados, (Pila<T>) pila);
             }
             nodoActual = nodoActual.getpSig();
         }
 
-        // Procesa el Stack con el orden topológico pero NO SE EJECUTA EN KOSARAJU
-        while (!pilaOrden.pilaVacia()) {
-            T nodo = (T) pilaOrden.eliminar();
-            System.out.println("Nodo en orden topológico: " + nodo);
-        }
+        return pila;
     }
 
-    public boolean contiene(Lista<T> lista, T elemento) {
-        Nodo <T> actual = lista.getpPrim();
-        while (actual != null) {
-            if (actual.gettInfo().equals(elemento)) {
-                return true;
+    public void llenarOrden(Nodo<T> nodo, Conjunto<Nodo<T>> visitados, Pila<T> pila) {
+        visitados.agregar((Nodo<T>) nodo); // Marcar el nodo actual como visitado
+
+        // Recorrer los nodos adyacentes
+        Nodo<T> adyacenteActual = nodo.getAdyacentes().primero();
+        while (adyacenteActual != null) {
+            if (!visitados.contiene((Nodo<T>) adyacenteActual)) {
+                llenarOrden(adyacenteActual, visitados, pila);
             }
-            actual = actual.getpSig();
-        }
-        return false;
-    }
-
-    public void recorrerDFS(Nodo<T> nodo, Lista<T> visitados, Pila<T> pilaOrden) {
-        //Con esto evitamos que los nodos no se visiten mas de una vez
-        visitados.insertar(nodo.gettInfo());
-
-        // Recorre los nodos adyacentes
-        Nodo <T> adyacente = nodo.getAdyacentes().primero();
-        while (adyacente != null) {
-            if (!contiene(visitados, adyacente.gettInfo())) {
-                //Si entra aqui, es porque hay nodos que no se ha realizado el DFS.
-                recorrerDFS(adyacente, visitados, pilaOrden);
-            }
-            adyacente = adyacente.getpSig();
+            adyacenteActual = adyacenteActual.getpSig();
         }
 
-        // Después de procesar todos los adyacentes, agrega este nodo al Stack
-        pilaOrden.insertar(nodo.gettInfo());
-        // Imprime el nodo en el componente fuertemente conexo
-        System.out.print(nodo.gettInfo() + " ");
+        // Insertar el nodo actual a la pila
+        pila.insertar(nodo.gettInfo());
     }
 
-    public void kosaraju() {
-        //Realizar un recorrido DFS en el grafo original y almacenar los nodos visitados en un Stack
-        Pila <T> pilaOrden = new Pila<>();
-        Lista<T> visitados = new Lista<>();
-        Nodo <T> nodoActual = listaNodos.getpPrim();
-        
-        
+    // Paso 2: Obtener el grafo transpuesto
+    private Grafo<T> Transpuesto() {
+        Grafo<T> transpuesto = new Grafo<>();
+
+        Nodo<T> nodoActual = (Nodo<T>) listaNodos.primero();
         while (nodoActual != null) {
-            if (!contiene(visitados, nodoActual.gettInfo())) {
-                recorrerDFS(nodoActual, visitados, pilaOrden);
+            Nodo<T> nuevoNodo = new Nodo<>(nodoActual.gettInfo());
+            transpuesto.agregarNodo(nuevoNodo.gettInfo());
+
+            Nodo<T> adyActual = nodoActual.getAdyacentes().primero();
+            while (adyActual != null) {
+                transpuesto.conectarNodos(adyActual.gettInfo(), nodoActual.gettInfo());
+                adyActual = adyActual.getpSig();
             }
+
             nodoActual = nodoActual.getpSig();
         }
 
-        //Calcular el grafo transpuesto
-        Grafo<T> grafoTranspuesto = transpuesto();
+        return transpuesto;
+    }
 
-        // Paso 3: Realizar un segundo recorrido DFS en el grafo transpuesto usando el orden topológico del Stack
-        visitados = new Lista<>();
+    // Paso 3: DFS en el grafo transpuesto en orden descendente de finalización
+    public void imprimirSCCs() {
+        Pila<Nodo<T>> pila = obtenerOrden();
+        Grafo<T> grafoTranspuesto = Transpuesto();
 
-        while (!pilaOrden.pilaVacia()) {
-            
-            // EL PROBLEMA ES LA PILA
-            T nodo = (T) pilaOrden.eliminar();
+        Conjunto<Nodo<T>> visitados = new Conjunto<>();
 
-            if (!contiene(visitados, nodo)) {
-                System.out.print("Componente fuertemente conexa: ");
-                recorrerDFS(grafoTranspuesto.listaNodos.obtenerNodo(nodo), visitados, pilaOrden);
-                System.out.println();
+        while (!pila.pilaVacia()) {
+            T elementoActual = (T) pila.eliminar();
+            Nodo<T> nodo = obtenerNodo(elementoActual);
+
+            if (!visitados.contiene(nodo)) {
+                DFS(grafoTranspuesto.obtenerNodo(nodo.gettInfo()), visitados);
+                System.out.println("FIN");
             }
         }
+    }
+
+    public void DFS(Nodo<T> nodo, Conjunto<Nodo<T>> visitados) {
+        visitados.agregar(nodo);
+        System.out.print(nodo.gettInfo() + ", ");
+
+        Nodo<T> adyacenteActual = nodo.getAdyacentes().primero();
+        while (adyacenteActual != null) {
+            if (!visitados.contiene(adyacenteActual)) {
+                DFS(adyacenteActual, visitados);
+            }
+            adyacenteActual = adyacenteActual.getpSig();
+        }
+
     }
 
 }
-
