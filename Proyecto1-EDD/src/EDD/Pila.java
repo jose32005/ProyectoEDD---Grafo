@@ -4,57 +4,67 @@ package EDD;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author PC
  * @param <T>
  */
-public class Pila<T>{
-    
-    private Nodo cima;
-    
-    public Pila(){
-        cima = null;
+public class Pila<T> {
+
+    private Nodo<T> cima;
+    private int iN;
+
+    // Constructor
+    public Pila() {
+        this.cima = null;
+        this.iN = 0;
     }
-    
-    public boolean pilaVacia(){
+
+    // Apilar un elemento en la cima de la pila.
+    public void apilar(T dato) {
+        Nodo<T> nuevoNodo = new Nodo<>(dato);
+        if (cima == null) {
+            cima = nuevoNodo;
+        } else {
+            nuevoNodo.setpSig(cima);
+            cima = nuevoNodo;
+        }
+        iN++;
+    }
+
+    // Desapilar un elemento de la cima de la pila.
+    public T desapilar() {
+        if (estaVacia()) {
+            throw new RuntimeException("La pila está vacía");
+        }
+        T datoRetirado = cima.gettInfo();
+        cima = cima.getpSig();
+        iN--;
+        return datoRetirado;
+    }
+
+    // Observar el elemento de la cima sin retirarlo.
+    public T cima() {
+        if (estaVacia()) {
+            throw new RuntimeException("La pila está vacía");
+        }
+        return cima.gettInfo();
+    }
+
+    // Verificar si la pila está vacía.
+    public boolean estaVacia() {
         return cima == null;
     }
-    
-    public void insertar(Object tInfo){
-        Nodo nuevo = new Nodo(tInfo);
-        nuevo.setpSig(cima);
-        setCima(nuevo);
-    }
-    
-    public Object eliminar(){
-        if (pilaVacia()) {
-            System.out.println("La pila se encuentra vacia");
-        }
-        Object aux = getCima().gettInfo();
-        setCima(getCima().getpSig());
-        return aux;
-        
-    }
-    
-    public void mostrarPila(){
-        if (!this.pilaVacia()) {
-            Nodo aux = cima;
-            while (cima != null) {                
-                System.out.println(cima.gettInfo());
-            }
-        }
+
+    // Obtener el tamaño de la pila.
+    public int getSize() {
+        return iN;
     }
 
-    public Nodo getCima() {
-        return cima;
+    // Vaciar la pila.
+    public void vaciar() {
+        cima = null;
+        iN = 0;
     }
 
-    public void setCima(Nodo cima) {
-        this.cima = cima;
-    }
-    
-    
-    
 }

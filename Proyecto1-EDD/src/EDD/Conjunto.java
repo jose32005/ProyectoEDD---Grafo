@@ -18,15 +18,35 @@ public class Conjunto<T> {
         this.lista = new Lista<>();
     }
 
-    public void agregar(T elemento) {
-        if (!contiene(elemento)) {
-            lista.insertar(elemento);
+    
+    public void insertar(T info) {
+        if (!contiene(info)) {
+            lista.insertar(info);
         }
     }
 
-    public boolean contiene(T elemento) {
-        return lista.obtenerNodo(elemento) != null;
+    public boolean contiene(T info) {
+        Nodo<T> nodo = lista.obtenerNodo(info);
+        return nodo != null;
     }
+    
+    
+
+    /**
+     * @return the lista
+     */
+    public Lista<T> getLista() {
+        return lista;
+    }
+
+    /**
+     * @param lista the lista to set
+     */
+    public void setLista(Lista<T> lista) {
+        this.lista = lista;
+    }
+    
+    
 }
 
 

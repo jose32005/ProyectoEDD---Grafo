@@ -20,27 +20,32 @@ public class main {
         
         Grafo miGrafo = new Grafo();
         
-        miGrafo.agregarNodo("@jose");
-        miGrafo.agregarNodo("@angelo");
-        miGrafo.agregarNodo("@estefania");
-        miGrafo.agregarNodo("@guillen");
-        miGrafo.conectarNodos("@jose", "@guillen");
-        miGrafo.conectarNodos("@jose", "@angelo");
-        miGrafo.conectarNodos("@jose", "@angelo");
-        miGrafo.conectarNodos("@angelo", "@estefania");
-        miGrafo.conectarNodos("@angelo", "@jose");
-        miGrafo.conectarNodos("@estefania", "@guillen");
-        miGrafo.conectarNodos("@estefania", "@jose");
-        miGrafo.conectarNodos("@jose", "@jose");
-        miGrafo.desconectarNodos("@estefania", "@jose");
-        miGrafo.desconectarNodos("@estefania", "@jose");
+        miGrafo.agregarNodo("@j");
+        miGrafo.agregarNodo("@a");
+        miGrafo.agregarNodo("@e");
+        miGrafo.agregarNodo("@g");
+        miGrafo.agregarNodo("@p");
+        miGrafo.agregarNodo("@s");
+        miGrafo.agregarNodo("@m");
+        miGrafo.agregarNodo("@r");
+        miGrafo.conectarNodos("@j", "@a");
+        miGrafo.conectarNodos("@j", "@e");
+        miGrafo.conectarNodos("@a", "@j");
+        miGrafo.conectarNodos("@p", "@j");
+        miGrafo.conectarNodos("@e", "@m");
+        miGrafo.conectarNodos("@e", "@s");
+        miGrafo.conectarNodos("@s", "@r");
+        miGrafo.conectarNodos("@r", "@s");
+        //miGrafo.desconectarNodos("@p", "@j");
+        //miGrafo.desconectarNodos("@e", "@j");
 
         
         miGrafo.imprimirGrafo();
         miGrafo.imprimirSCCs();
-        //miGrafo.transpuesto().imprimirGrafo();
+        miGrafo.Transpuesto().imprimirGrafo();
         //miGrafo.imprimirSCCs();
   
     }
+    
     
 }
