@@ -103,20 +103,6 @@ public class Lista<T> {
         }
         return null;
     }
-    
-    //Busca el indice de un nodo // BORRAR SI NO HACE FALTA
-    public int obtenerIndice(Nodo<T> nodoBuscado) {
-    int index = 0;
-    Nodo<T> actual = this.getpPrim(); 
-    while (actual != null) {
-        if (actual.equals(nodoBuscado)) {
-            return index;
-        }
-        actual = actual.getpSig();
-        index++;
-    }
-    return -1; // Nodo no encontrado
-}
 
     // Gets & Sets
     /**
