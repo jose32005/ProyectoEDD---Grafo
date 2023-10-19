@@ -56,7 +56,22 @@ public class Pila<T> {
         return cima == null;
     }
 
-    // Obtener el tamaño de la pila.
+    public void imprimirPila() {
+        Pila<T> pilaTemporal = new Pila<>();
+        while (!this.estaVacia()) {
+            T elemento = this.desapilar();
+            System.out.print(elemento + " ");
+            pilaTemporal.apilar(elemento);
+        }
+        System.out.println(); // Para agregar una nueva línea al final
+
+        // Restaurar la pila original
+        while (!pilaTemporal.estaVacia()) {
+            this.apilar(pilaTemporal.desapilar());
+        }
+    }
+
+// Obtener el tamaño de la pila.
     public int getSize() {
         return iN;
     }

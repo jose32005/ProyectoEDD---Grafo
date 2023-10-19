@@ -96,7 +96,7 @@ public class Grafo<T> {
         nodoOrigen.getAdyacentes().eliminar(infoDestino);
     }
 
-    // Metodos adaptados
+    
     //Metodo que imprime el grafo
     public void imprimirGrafo() {
         System.out.println("El grafo contiene " + getNumVertices() + " vértices: \n");
@@ -119,59 +119,23 @@ public class Grafo<T> {
         System.out.println("FIN");
     }
 
-    public Nodo<T> obtenerNodo(T info) {
-        return (Nodo<T>) getListaNodos().obtenerNodo(info);
-    }
-
-    
-    
-    
     // Algoritmo de Kosaraju
-// Crear el orden
-    public Pila<T> obtenerOrden() {
-        Conjunto<T> visitados = new Conjunto<>();
-        Pila<T> pila = new Pila<>();
-        Nodo<T> nodoActual = getListaNodos().primero();
 
-        while (nodoActual != null) {
-            if (!visitados.contiene(nodoActual.gettInfo())) {
-                llenarOrden(nodoActual, visitados, pila);
-            }
-            nodoActual = nodoActual.getpSig();
-        }
-
-        return pila;
-    }
-
-// Llenar la pila
-    public void llenarOrden(Nodo<T> nodo, Conjunto<T> visitados, Pila<T> pila) {
-        visitados.insertar(nodo.gettInfo());
-
-        Nodo<T> adyacenteActual = nodo.getAdyacentes().primero();
-        while (adyacenteActual != null) {
-            if (!visitados.contiene(adyacenteActual.gettInfo())) {
-                llenarOrden(adyacenteActual, visitados, pila);
-            }
-            adyacenteActual = adyacenteActual.getpSig();
-        }
-        pila.apilar(nodo.gettInfo());
-    }
-
-// Creacion del grafo transpuesto 
-    public Grafo<T> Transpuesto() {
+// Creacion del grafo traspuesto 
+    public Grafo<T> Traspuesto() {
         Grafo<T> transpuesto = new Grafo<>();
 
         // Agregamos todos los nodos al grafo transpuesto
-        Nodo<T> nodoActual = getListaNodos().primero();
+        Nodo<T> nodoActual = this.listaNodos.getpPrim();
         while (nodoActual != null) {
             transpuesto.agregarNodo(nodoActual.gettInfo());
             nodoActual = nodoActual.getpSig();
         }
 
         // Invertimos las aristas
-        nodoActual = getListaNodos().primero();
+        nodoActual = this.listaNodos.getpPrim();
         while (nodoActual != null) {
-            Nodo<T> adyActual = nodoActual.getAdyacentes().primero();
+            Nodo<T> adyActual = nodoActual.getAdyacentes().getpPrim();
             while (adyActual != null) {
                 transpuesto.conectarNodos(adyActual.gettInfo(), nodoActual.gettInfo());
                 adyActual = adyActual.getpSig();
@@ -182,32 +146,96 @@ public class Grafo<T> {
         return transpuesto;
     }
 
-// Imprimir los sccs
-    public void imprimirSCCs() {
-        Pila<T> pila = obtenerOrden();
-        Grafo<T> grafoTranspuesto = Transpuesto();
+    // Imprimir los sccs
+    public void obtenerSCCs() {
+        Grafo<T> traspuesto = this.Traspuesto();
+        Pila<T> pila = new Pila<>();
         Conjunto<T> visitados = new Conjunto<>();
 
-        while (!pila.estaVacia()) {
-            T elementoActual = pila.desapilar();
-            Nodo<T> nodo = obtenerNodo(elementoActual);
-
-            if (!visitados.contiene(nodo.gettInfo())) {
-                Pila<T> componente = new Pila<>();
-                llenarOrden(grafoTranspuesto.obtenerNodo(nodo.gettInfo()), visitados, componente);
-                System.out.print("[ ");
-                while (!componente.estaVacia()) {
-                    System.out.print(componente.desapilar() + " ");
-                }
-                System.out.println("]");
+        // Llenar la pila y el conjunto de visitados
+        Nodo<T> nodoActual = this.listaNodos.getpPrim();
+        while (nodoActual != null) {
+            if (!visitados.contiene(nodoActual.gettInfo())) {
+                llenarOrden(nodoActual, visitados, pila);
             }
+            nodoActual = nodoActual.getpSig();
+        }
+        
+
+        // Limpiar el conjunto de nodos visitados para el siguiente DFS
+        visitados = new Conjunto<>();
+
+        // Procesar nodos en el orden determinado por la pila
+        while (!pila.estaVacia()) {
+            T nodoInfo = pila.desapilar();
+            if (!visitados.contiene(nodoInfo)) {
+                Lista<T> sccActual = new Lista();
+                llenarSCC(traspuesto.buscarNodo(nodoInfo), visitados, sccActual, traspuesto);
+
+                // Imprimir el SCC
+                Nodo<T> nodoSCC = sccActual.getpPrim();
+                while (nodoSCC != null) {
+                    System.out.print(nodoSCC.gettInfo());
+                    nodoSCC = nodoSCC.getpSig();
+                    if (nodoSCC != null) {
+                        System.out.print(", ");
+                    }
+                }
+                System.out.println();
+            } 
         }
     }
-    
-    
-    
-    // Gets and Sets
 
+    //Llena los SCC con DFS
+    public void llenarSCC(Nodo<T> nodo, Conjunto<T> visitados, Lista<T> sccActual, Grafo<T> traspuesto) {
+        visitados.insertar(nodo.gettInfo());
+        sccActual.insertar(nodo.gettInfo());
+        Lista<T> adyacentes = nodo.getAdyacentes();
+        Nodo<T> adyacenteActual = adyacentes.getpPrim();
+
+        while (adyacenteActual != null) {
+            Nodo<T> nodoAdyacente = traspuesto.buscarNodo(adyacenteActual.gettInfo()); // Buscar el nodo real basado en la información del nodo adyacente
+            
+            if (!visitados.contiene(nodoAdyacente.gettInfo())) {
+                llenarSCC(nodoAdyacente, visitados, sccActual, traspuesto);
+            }
+            
+            adyacenteActual = adyacenteActual.getpSig();
+        }
+    }
+
+    //Crea el orden del la Pila y el conjunto inicial
+    public void llenarOrden(Nodo<T> nodo, Conjunto<T> visitados, Pila<T> pila) {
+        visitados.insertar(nodo.gettInfo());
+        Lista<T> adyacentes = nodo.getAdyacentes();
+        Nodo<T> adyacenteActual = adyacentes.getpPrim();
+
+        while (adyacenteActual != null) {
+            Nodo<T> nodoAdyacente = buscarNodo(adyacenteActual.gettInfo()); // Buscar el nodo real basado en la información del nodo adyacente
+
+            if (!visitados.contiene(nodoAdyacente.gettInfo())) {
+                llenarOrden(nodoAdyacente, visitados, pila);
+            }
+
+            adyacenteActual = adyacenteActual.getpSig();
+        }
+
+        pila.apilar(nodo.gettInfo());
+    }
+
+    // Método para buscar un nodo en el grafo basado en su información
+    public Nodo<T> buscarNodo(T info) {
+        Nodo<T> nodoActual = this.listaNodos.getpPrim();
+        while (nodoActual != null) {
+            if (nodoActual.gettInfo().equals(info)) {
+                return nodoActual;
+            }
+            nodoActual = nodoActual.getpSig();
+        }
+        return null; // Retorna null si no encuentra el nodo
+    }
+
+    // Gets and Sets
     /**
      * @return the listaNodos
      */
@@ -235,7 +263,5 @@ public class Grafo<T> {
     public void setNumVertices(int numVertices) {
         this.numVertices = numVertices;
     }
-    
-    
 
 }
