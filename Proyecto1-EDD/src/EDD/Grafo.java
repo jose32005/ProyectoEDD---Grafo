@@ -51,6 +51,7 @@ public class Grafo<T> {
         // Eliminar el nodo de la lista principal de nodos
         getListaNodos().eliminar(info);
         setNumVertices(getNumVertices() - 1);
+        System.out.println("Nodo Eliminado con Exito");
     }
 
     // Método para conectar dos nodos en el grafo (agregar arista entre dos nodos)
@@ -80,20 +81,12 @@ public class Grafo<T> {
     // Método para desconectar dos nodos en el grafo (eliminar arista entre dos nodos)
     public void desconectarNodos(T infoOrigen, T infoDestino) {
         Nodo<T> nodoOrigen = getListaNodos().obtenerNodo(infoOrigen);
-        Nodo<T> nodoDestino = getListaNodos().obtenerNodo(infoDestino);
 
-        if (nodoOrigen == null || nodoDestino == null) {
-            System.out.println("Uno o ambos nodos no existen en el grafo");
-            return;
+        if (nodoOrigen.getAdyacentes().obtenerNodo(infoDestino)!= null){
+            nodoOrigen.getAdyacentes().eliminar(infoDestino);
+            System.out.println("Los nodos " + infoOrigen + " y " + infoDestino + " fueron desconectados con exito");
         }
-
-        Nodo<T> adyacente = nodoOrigen.getAdyacentes().obtenerNodo(infoDestino);
-        if (adyacente == null) {
-            System.out.println("Los nodos " + infoOrigen + " y " + infoDestino + " no están conectados");
-            return;
-        }
-
-        nodoOrigen.getAdyacentes().eliminar(infoDestino);
+        
     }
 
     
