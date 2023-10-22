@@ -4,6 +4,15 @@
  */
 package Interfaces;
 
+import EDD.Grafo;
+import Extras.Funciones;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import org.graphstream.graph.Graph;
+import org.graphstream.ui.view.Viewer;
+import org.graphstream.ui.view.Viewer.CloseFramePolicy;
+
 /**
  *
  * @author evaas
@@ -13,10 +22,13 @@ public class Ventana1 extends javax.swing.JFrame {
     /**
      * Creates new form Ventana1
      */
+    public static Grafo grafo;
+
     public Ventana1() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.grafo = new Grafo();
     }
 
     /**
@@ -77,6 +89,11 @@ public class Ventana1 extends javax.swing.JFrame {
         jPanel1.add(CambiarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 160, 70));
 
         MostrarGrafo.setText("Mostrar Grafo");
+        MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarGrafoActionPerformed(evt);
+            }
+        });
         jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 160, 70));
 
         ModificarGrafo.setText("Modificar Grafo");
@@ -105,7 +122,12 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void MostrarSCCsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarSCCsActionPerformed
-        // TODO add your handling code here:
+        Funciones func = new Funciones();
+        Grafo miGrafo = func.leer_txt();
+        Graph graph = miGrafo.obtenerSCCs();
+        Viewer viewer = graph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+
     }//GEN-LAST:event_MostrarSCCsActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
@@ -115,6 +137,25 @@ public class Ventana1 extends javax.swing.JFrame {
     private void CambiarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarArchivoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CambiarArchivoActionPerformed
+
+    private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
+        Funciones func = new Funciones();
+        Grafo miGrafo = func.leer_txt();
+        Graph graph = miGrafo.llenarGraph();
+
+        Viewer viewer = graph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+
+//        this.addWindowListener(new WindowAdapter() {
+//            @Override
+//            public void windowClosing(WindowEvent e) {
+//                // Aquí puedes realizar acciones específicas antes de cerrar la ventana
+//                // Por ejemplo, ocultar la ventana en lugar de cerrarla
+//                setVisible(false);
+//            }
+//        });
+
+    }//GEN-LAST:event_MostrarGrafoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,16 +171,24 @@ public class Ventana1 extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana1.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana1.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana1.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana1.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
