@@ -106,7 +106,11 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void MostrarSCCsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarSCCsActionPerformed
-        // TODO add your handling code here:
+        Funciones func = new Funciones();
+        Grafo miGrafo = func.leer_txt();
+        Graph graph = miGrafo.obtenerSCCs();
+        Viewer viewer = graph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
     }//GEN-LAST:event_MostrarSCCsActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
