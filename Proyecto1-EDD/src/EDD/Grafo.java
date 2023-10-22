@@ -4,11 +4,6 @@
  */
 package EDD;
 
-import java.awt.Color;
-import java.util.Random;
-import org.graphstream.graph.Graph;
-import org.graphstream.graph.implementations.MultiGraph;
-
 /**
  *
  * @author G. Angelo, S. Estefania y S. Jose
@@ -18,14 +13,11 @@ public class Grafo<T> {
 
     private Lista<T> listaNodos; // Lista principal de nodos
     private int numVertices;
-    public Graph graph;
 
     //Constructor
     public Grafo() {
         this.numVertices = 0;
         this.listaNodos = new Lista<>();
-        this.graph = new MultiGraph("Prueba 1");
-
     }
 
     //Metodos
@@ -90,13 +82,14 @@ public class Grafo<T> {
     public void desconectarNodos(T infoOrigen, T infoDestino) {
         Nodo<T> nodoOrigen = getListaNodos().obtenerNodo(infoOrigen);
 
-        if (nodoOrigen.getAdyacentes().obtenerNodo(infoDestino) != null) {
+        if (nodoOrigen.getAdyacentes().obtenerNodo(infoDestino)!= null){
             nodoOrigen.getAdyacentes().eliminar(infoDestino);
             System.out.println("Los nodos " + infoOrigen + " y " + infoDestino + " fueron desconectados con exito");
         }
-
+        
     }
 
+    
     //Metodo que imprime el grafo
     public void imprimirGrafo() {
         System.out.println("El grafo contiene " + getNumVertices() + " vértices: \n");
@@ -119,53 +112,8 @@ public class Grafo<T> {
         System.out.println("FIN");
     }
 
-    public Graph llenarGraph() {
-        System.setProperty("org.graphstream.ui", "swing");
-        this.graph.setAttribute("ui.stylesheet", "graph { fill-color: gainsboro; }");
-        this.graph.setAttribute("ui.quality");
-        this.graph.setAttribute("ui.antialias");
-
-        Nodo<T> pAux = listaNodos.getpPrim();
-
-        //Se agregan todos los nodos al graph
-        while (pAux != null) {
-            this.graph.addNode((String) pAux.gettInfo());
-            this.graph.getNode((String) pAux.gettInfo()).setAttribute("ui.label", (String) pAux.gettInfo());
-
-            graph.getNode((String) pAux.gettInfo()).setAttribute("ui.style", "shape: circle; size: 30;");
-
-            pAux = pAux.getpSig();
-        }
-
-        pAux = listaNodos.getpPrim();
-        while (pAux != null) {
-
-            Nodo<T> pAuxAdy = pAux.getAdyacentes().getpPrim();
-
-            while (pAuxAdy != null) {
-                //Generamos un color aleatorio para las listas de adyacencia de un nodo especifico
-                Color randomColor = getRandomColor();
-                this.graph.addEdge(pAux.gettInfo() + "" + pAuxAdy.gettInfo(), (String) pAux.gettInfo(), (String) pAuxAdy.gettInfo(), true);
-
-                graph.getNode((String) pAux.gettInfo()).setAttribute("ui.style", "fill-color: rgb(" + randomColor.getRed() + "," + randomColor.getGreen() + "," + randomColor.getBlue() + "); shape: circle; size: 30;");
-
-                pAuxAdy = pAuxAdy.getpSig();
-            }
-            pAux = pAux.getpSig();
-        }
-//        graph.display();
-        return graph;
-    }
-
-    public static Color getRandomColor() {
-        Random random = new Random();
-        int red = random.nextInt(256);
-        int green = random.nextInt(256);
-        int blue = random.nextInt(256);
-        return new Color(red, green, blue);
-    }
-
     // Algoritmo de Kosaraju
+
 // Creacion del grafo traspuesto 
     public Grafo<T> Traspuesto() {
         Grafo<T> transpuesto = new Grafo<>();
@@ -192,26 +140,20 @@ public class Grafo<T> {
     }
 
     // Imprimir los sccs
-    public Graph obtenerSCCs() {
-        Graph graphPrueba = this.llenarGraph();
-        graphPrueba.setAttribute("ui.stylesheet", "graph { fill-color: oldlace; }");
-        System.setProperty("org.graphstream.ui", "swing");
-        graphPrueba.setAttribute("ui.quality");
-        graphPrueba.setAttribute("ui.antialias");
-
+    public void obtenerSCCs() {
         Grafo<T> traspuesto = this.Traspuesto();
         Pila<T> pila = new Pila<>();
         Conjunto<T> visitados = new Conjunto<>();
 
         // Llenar la pila y el conjunto de visitados
         Nodo<T> nodoActual = this.listaNodos.getpPrim();
-        while (nodoActual
-                != null) {
+        while (nodoActual != null) {
             if (!visitados.contiene(nodoActual.gettInfo())) {
                 llenarOrden(nodoActual, visitados, pila);
             }
             nodoActual = nodoActual.getpSig();
         }
+        
 
         // Limpiar el conjunto de nodos visitados para el siguiente DFS
         visitados = new Conjunto<>();
@@ -219,16 +161,13 @@ public class Grafo<T> {
         // Procesar nodos en el orden determinado por la pila
         while (!pila.estaVacia()) {
             T nodoInfo = pila.desapilar();
-            Color randomColor = getRandomColor();
             if (!visitados.contiene(nodoInfo)) {
                 Lista<T> sccActual = new Lista();
                 llenarSCC(traspuesto.buscarNodo(nodoInfo), visitados, sccActual, traspuesto);
 
                 // Imprimir el SCC
                 Nodo<T> nodoSCC = sccActual.getpPrim();
-                //Añadir elementos al scc
                 while (nodoSCC != null) {
-                    graphPrueba.getNode((String) nodoSCC.gettInfo()).setAttribute("ui.style", "fill-color: rgb(" + randomColor.getRed() + "," + randomColor.getGreen() + "," + randomColor.getBlue() + "); shape: circle; size: 40;");
                     System.out.print(nodoSCC.gettInfo());
                     nodoSCC = nodoSCC.getpSig();
                     if (nodoSCC != null) {
@@ -236,11 +175,8 @@ public class Grafo<T> {
                     }
                 }
                 System.out.println();
-
-            }
+            } 
         }
-        return graphPrueba;
-
     }
 
     //Llena los SCC con DFS
@@ -252,11 +188,11 @@ public class Grafo<T> {
 
         while (adyacenteActual != null) {
             Nodo<T> nodoAdyacente = traspuesto.buscarNodo(adyacenteActual.gettInfo()); // Buscar el nodo real basado en la información del nodo adyacente
-
+            
             if (!visitados.contiene(nodoAdyacente.gettInfo())) {
                 llenarSCC(nodoAdyacente, visitados, sccActual, traspuesto);
             }
-
+            
             adyacenteActual = adyacenteActual.getpSig();
         }
     }

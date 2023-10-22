@@ -4,15 +4,6 @@
  */
 package Interfaces;
 
-import EDD.Grafo;
-import Extras.Funciones;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
-import org.graphstream.graph.Graph;
-import org.graphstream.ui.view.Viewer;
-import org.graphstream.ui.view.Viewer.CloseFramePolicy;
-
 /**
  *
  * @author evaas
@@ -22,13 +13,10 @@ public class Ventana1 extends javax.swing.JFrame {
     /**
      * Creates new form Ventana1
      */
-    public static Grafo grafo;
-
     public Ventana1() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.grafo = new Grafo();
     }
 
     /**
@@ -40,10 +28,11 @@ public class Ventana1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         Salir = new javax.swing.JButton();
         MostrarSCCs = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ActualizarRepositorio = new javax.swing.JButton();
         CambiarArchivo = new javax.swing.JButton();
         MostrarGrafo = new javax.swing.JButton();
         ModificarGrafo = new javax.swing.JButton();
@@ -77,8 +66,8 @@ public class Ventana1 extends javax.swing.JFrame {
         });
         jPanel1.add(MostrarSCCs, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 160, 70));
 
-        jButton2.setText("Actualizar Repositorio");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 160, 70));
+        ActualizarRepositorio.setText("Actualizar Repositorio");
+        jPanel1.add(ActualizarRepositorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 160, 70));
 
         CambiarArchivo.setText("Cargar Archivo");
         CambiarArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -89,11 +78,6 @@ public class Ventana1 extends javax.swing.JFrame {
         jPanel1.add(CambiarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 160, 70));
 
         MostrarGrafo.setText("Mostrar Grafo");
-        MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MostrarGrafoActionPerformed(evt);
-            }
-        });
         jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 160, 70));
 
         ModificarGrafo.setText("Modificar Grafo");
@@ -117,17 +101,12 @@ public class Ventana1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        //System.exit(0);
-        this.dispose();
+        System.exit(0);
+        //this.dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
     private void MostrarSCCsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarSCCsActionPerformed
-        Funciones func = new Funciones();
-        Grafo miGrafo = func.leer_txt();
-        Graph graph = miGrafo.obtenerSCCs();
-        Viewer viewer = graph.display();
-        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_MostrarSCCsActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
@@ -137,25 +116,6 @@ public class Ventana1 extends javax.swing.JFrame {
     private void CambiarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarArchivoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CambiarArchivoActionPerformed
-
-    private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
-        Funciones func = new Funciones();
-        Grafo miGrafo = func.leer_txt();
-        Graph graph = miGrafo.llenarGraph();
-
-        Viewer viewer = graph.display();
-        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
-
-//        this.addWindowListener(new WindowAdapter() {
-//            @Override
-//            public void windowClosing(WindowEvent e) {
-//                // Aquí puedes realizar acciones específicas antes de cerrar la ventana
-//                // Por ejemplo, ocultar la ventana en lugar de cerrarla
-//                setVisible(false);
-//            }
-//        });
-
-    }//GEN-LAST:event_MostrarGrafoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,24 +131,16 @@ public class Ventana1 extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana1.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana1.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana1.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana1.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -199,6 +151,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ActualizarRepositorio;
     private javax.swing.JButton CambiarArchivo;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Logo;
@@ -206,7 +159,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JButton MostrarGrafo;
     private javax.swing.JButton MostrarSCCs;
     private javax.swing.JButton Salir;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

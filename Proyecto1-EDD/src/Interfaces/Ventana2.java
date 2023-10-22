@@ -18,7 +18,6 @@ public class Ventana2 extends javax.swing.JFrame {
     public Ventana2(Ventana1 v1) {
         initComponents();
         this.v1=v1;
-        v1.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
@@ -32,8 +31,19 @@ public class Ventana2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Agregar = new javax.swing.JButton();
+        Eliminar = new javax.swing.JButton();
+        Conectar = new javax.swing.JButton();
+        Desconectar = new javax.swing.JButton();
+        SalirV2 = new javax.swing.JButton();
+        Fondo2 = new javax.swing.JLabel();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -41,13 +51,78 @@ public class Ventana2 extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo3.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, -1));
+        Agregar.setText("Agregar Usuario");
+        Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 160, 70));
+
+        Eliminar.setText("Eliminar Usuario");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 160, 70));
+
+        Conectar.setText("Conectar Usuarios");
+        Conectar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConectarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Conectar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 160, 70));
+
+        Desconectar.setText("Desconectar Usuarios");
+        Desconectar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DesconectarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Desconectar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 160, 70));
+
+        SalirV2.setBackground(new java.awt.Color(0, 51, 255));
+        SalirV2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SalirV2.setForeground(new java.awt.Color(255, 255, 255));
+        SalirV2.setText("Salir");
+        SalirV2.setBorder(null);
+        SalirV2.setFocusPainted(false);
+        SalirV2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirV2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(SalirV2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 60, 30));
+
+        Fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo3.jpg"))); // NOI18N
+        jPanel1.add(Fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AgregarActionPerformed
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EliminarActionPerformed
+
+    private void ConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConectarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConectarActionPerformed
+
+    private void DesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DesconectarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DesconectarActionPerformed
+
+    private void SalirV2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirV2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_SalirV2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -85,7 +160,14 @@ public class Ventana2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton Agregar;
+    private javax.swing.JButton Conectar;
+    private javax.swing.JButton Desconectar;
+    private javax.swing.JButton Eliminar;
+    private javax.swing.JLabel Fondo2;
+    private javax.swing.JButton SalirV2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
