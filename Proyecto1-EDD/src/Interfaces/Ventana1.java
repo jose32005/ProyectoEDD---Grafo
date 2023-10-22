@@ -30,13 +30,12 @@ public class Ventana1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Salir = new javax.swing.JButton();
-        Nombre = new javax.swing.JLabel();
         MostrarSCCs = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         CambiarArchivo = new javax.swing.JButton();
         MostrarGrafo = new javax.swing.JButton();
-        Nombre2 = new javax.swing.JLabel();
         ModificarGrafo = new javax.swing.JButton();
+        Logo = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,21 +57,16 @@ public class Ventana1 extends javax.swing.JFrame {
         });
         jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 60, 30));
 
-        Nombre.setFont(new java.awt.Font("Arial Black", 1, 55)); // NOI18N
-        Nombre.setForeground(new java.awt.Color(0, 0, 153));
-        Nombre.setText("Conecta");
-        jPanel1.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, 50));
-
         MostrarSCCs.setText("Mostrar SCCs");
         MostrarSCCs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MostrarSCCsActionPerformed(evt);
             }
         });
-        jPanel1.add(MostrarSCCs, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 150, 40));
+        jPanel1.add(MostrarSCCs, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 160, 70));
 
         jButton2.setText("Actualizar Repositorio");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 150, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 160, 70));
 
         CambiarArchivo.setText("Cargar Archivo");
         CambiarArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -80,15 +74,10 @@ public class Ventana1 extends javax.swing.JFrame {
                 CambiarArchivoActionPerformed(evt);
             }
         });
-        jPanel1.add(CambiarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 150, 40));
+        jPanel1.add(CambiarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 160, 70));
 
         MostrarGrafo.setText("Mostrar Grafo");
-        jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 150, 40));
-
-        Nombre2.setFont(new java.awt.Font("Arial Black", 1, 65)); // NOI18N
-        Nombre2.setForeground(new java.awt.Color(0, 0, 153));
-        Nombre2.setText("2");
-        jPanel1.add(Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, -1, -1));
+        jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 160, 70));
 
         ModificarGrafo.setText("Modificar Grafo");
         ModificarGrafo.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +85,10 @@ public class Ventana1 extends javax.swing.JFrame {
                 ModificarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(ModificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 150, 40));
+        jPanel1.add(ModificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 160, 70));
+
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo.png"))); // NOI18N
+        jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
         Fondo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo3.jpg"))); // NOI18N
@@ -117,7 +109,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarSCCsActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
-        // TODO add your handling code here:
+        Ventana2 v2 = new Ventana2(this);
     }//GEN-LAST:event_ModificarGrafoActionPerformed
 
     private void CambiarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarArchivoActionPerformed
@@ -160,11 +152,10 @@ public class Ventana1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CambiarArchivo;
     private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel Logo;
     private javax.swing.JButton ModificarGrafo;
     private javax.swing.JButton MostrarGrafo;
     private javax.swing.JButton MostrarSCCs;
-    private javax.swing.JLabel Nombre;
-    private javax.swing.JLabel Nombre2;
     private javax.swing.JButton Salir;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
