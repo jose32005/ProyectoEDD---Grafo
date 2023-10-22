@@ -113,6 +113,15 @@ public class Ventana1 extends javax.swing.JFrame {
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
     }//GEN-LAST:event_MostrarSCCsActionPerformed
 
+    private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        Funciones func = new Funciones();
+        Grafo miGrafo = func.leer_txt();
+        Graph graph = miGrafo.llenarGraph();
+
+        Viewer viewer = graph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+    }//GEN-LAST:event_MostrarSCCsActionPerformed  
+
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
         Ventana2 v2 = new Ventana2(this);
     }//GEN-LAST:event_ModificarGrafoActionPerformed
