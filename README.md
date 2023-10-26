@@ -1,4 +1,4 @@
-# ProyectoEDD---Grafo
+# Proyecto 1 - Estructuras de Datos 🧑‍💻
 **PARA EJECUTAR EL PROGRAMA:**
 1. Descargar la carpeta "Proyecto1-EDD" y "Librerias" en la ruta de su preferencia
 2. Abrir el proyecto en Apache NetBeans a traves de la carpeta: "Proyecto1-EDD"
