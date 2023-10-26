@@ -1,5 +1,3 @@
-import EDD.Grafo;
-import Extras.Funciones;
 import Interfaces.Ventana1;
 import java.io.FileNotFoundException;
 
