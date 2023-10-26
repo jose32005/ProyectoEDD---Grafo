@@ -3,7 +3,7 @@ package Extras;
 import EDD.Grafo;
 import EDD.Lista;
 import EDD.Nodo;
-import Intefaces.FileChooser;
+import Interfaces.FileChooser;
 import java.awt.Component;
 import java.io.BufferedReader;
 import java.io.File;

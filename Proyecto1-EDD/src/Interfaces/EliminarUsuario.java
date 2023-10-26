@@ -34,10 +34,10 @@ public class EliminarUsuario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        Nombre = new javax.swing.JLabel();
+        TituloEU = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        CancelarEU = new javax.swing.JButton();
+        AceptarEU = new javax.swing.JButton();
         Nombre1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -56,10 +56,10 @@ public class EliminarUsuario extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Nombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Nombre.setText("Eliminar Usuario");
-        jPanel2.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 160, 40));
+        TituloEU.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TituloEU.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TituloEU.setText("Eliminar Usuario");
+        jPanel2.add(TituloEU, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 160, 40));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,21 +68,21 @@ public class EliminarUsuario extends javax.swing.JFrame {
         });
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 270, 40));
 
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        CancelarEU.setText("Cancelar");
+        CancelarEU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                CancelarEUActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
+        jPanel2.add(CancelarEU, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
-        jButton2.setText("Aceptar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        AceptarEU.setText("Aceptar");
+        AceptarEU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                AceptarEUActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
+        jPanel2.add(AceptarEU, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
 
         Nombre1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Nombre1.setText("Nombre del usuario:");
@@ -97,14 +97,14 @@ public class EliminarUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void AceptarEUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarEUActionPerformed
         Ventana1.getMiGrafo().eliminarNodo(func.solicitar_usuario(jTextField1));
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_AceptarEUActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void CancelarEUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarEUActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_CancelarEUActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,10 +145,10 @@ public class EliminarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Nombre;
+    private javax.swing.JButton AceptarEU;
+    private javax.swing.JButton CancelarEU;
     private javax.swing.JLabel Nombre1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel TituloEU;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;

@@ -19,7 +19,7 @@ public class Ventana1 extends javax.swing.JFrame {
     /**
      * Creates new form Ventana1
      */
-    private static Grafo miGrafo;
+    static Grafo miGrafo;
     private static Funciones func;
 
     public Ventana1() throws FileNotFoundException {
@@ -141,9 +141,9 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificarGrafoActionPerformed
 
     private void CambiarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarArchivoActionPerformed
-        Ventana1.getFunc().abrir_archivo();
-        miGrafo = new Grafo();
-        getMiGrafo().llenar_grafo();
+        Aviso aviso1 = new Aviso();
+        aviso1.setLocationRelativeTo(null);
+        aviso1.setVisible(true);
     }//GEN-LAST:event_CambiarArchivoActionPerformed
 
     private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed

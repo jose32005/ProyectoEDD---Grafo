@@ -33,75 +33,63 @@ public class ConectarUsuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        Nombre = new javax.swing.JLabel();
+        TituloCU = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        CancelarCU = new javax.swing.JButton();
+        AceptarCU = new javax.swing.JButton();
         Nombre1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         Nombre2 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Nombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Nombre.setText("Conectar Usuarios");
-        jPanel2.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 160, 40));
+        TituloCU.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TituloCU.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TituloCU.setText("Conectar Usuarios");
+        jPanel1.add(TituloCU, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 160, 40));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 270, 40));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 270, 40));
 
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        CancelarCU.setText("Cancelar");
+        CancelarCU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                CancelarCUActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, -1, -1));
+        jPanel1.add(CancelarCU, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, -1, -1));
 
-        jButton2.setText("Aceptar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        AceptarCU.setText("Aceptar");
+        AceptarCU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                AceptarCUActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+        jPanel1.add(AceptarCU, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
         Nombre1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Nombre1.setText("Nombre del usuario origen:");
-        jPanel2.add(Nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 210, 40));
+        jPanel1.add(Nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 210, 40));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 270, 40));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 270, 40));
 
         Nombre2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Nombre2.setText("Nombre del usuario destino:");
-        jPanel2.add(Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 220, 40));
+        jPanel1.add(Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 220, 40));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 260));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,14 +98,14 @@ public class ConectarUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void AceptarCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarCUActionPerformed
         Ventana1.getMiGrafo().conectarNodos(func.solicitar_usuario(jTextField1), func.solicitar_usuario(jTextField2));
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_AceptarCUActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void CancelarCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCUActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_CancelarCUActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -166,13 +154,12 @@ public class ConectarUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Nombre;
+    private javax.swing.JButton AceptarCU;
+    private javax.swing.JButton CancelarCU;
     private javax.swing.JLabel Nombre1;
     private javax.swing.JLabel Nombre2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel TituloCU;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
