@@ -17,6 +17,7 @@ public class Conjunto<T> {
      * Crea un nuevo conjunto vacío. Inicializa un nuevo conjunto sin elementos.
      * El conjunto se utiliza para almacenar elementos únicos y no duplicados.
      *
+     * @author G. Angelo, S. Estefania y S. Jose.
      * @version: 27/10/2023
      */
     public Conjunto() {
@@ -27,6 +28,7 @@ public class Conjunto<T> {
      * Se toma un elemento de tipo T y se inserta en el conjunto si y solo si el
      * elemento no está contenido previamente en la estructura.
      *
+     * @author G. Angelo, S. Estefania y S. Jose.
      * @version: 27/10/2023
      * @param info
      */
@@ -38,6 +40,7 @@ public class Conjunto<T> {
     /**
      * Verifica si el conjunto contiene un elemento específico.
      *
+     * @author G. Angelo, S. Estefania y S. Jose.
      * @param info El elemento que se busca en el conjunto.
      * @return true si el elemento está presente en el conjunto, de lo
      * contrario, es false.
@@ -47,10 +50,9 @@ public class Conjunto<T> {
         Nodo<T> nodo = lista.obtenerNodo(info);
         return nodo != null;
     }
-    
-    
 
     /**
+     * @author G. Angelo, S. Estefania y S. Jose.
      * @return the lista
      * @version: 27/10/2023
      */
@@ -59,6 +61,7 @@ public class Conjunto<T> {
     }
 
     /**
+     * @author G. Angelo, S. Estefania y S. Jose.
      * @param lista the lista to set
      * @version: 27/10/2023
      */
