@@ -8,14 +8,18 @@ import Extras.Funciones;
 
 /**
  *
- * @author joses
+ * @author G. Angelo, S. Estefania y S. Jose
  */
 public class EliminarUsuario extends javax.swing.JFrame {
 
     public Funciones func;
 
     /**
-     * Creates new form Ventana3
+     * Constructor de la clase EliminarUsuario. Inicializa la interfaz gráfica y
+     * otras funcionalidades necesarias para eliminar un usuario.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @version: 27/10/2023
      */
     public EliminarUsuario() {
         initComponents();
@@ -93,15 +97,38 @@ public class EliminarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Campo de texto donde se debe colocar el usuario que se desea eliminar.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    /**
+     * Manejador de eventos para el botón "Aceptar". Elimina el nodo en el grafo
+     * utilizando los usuarios ingresados en los campos de texto y luego oculta
+     * la ventana actual.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void AceptarEUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarEUActionPerformed
         Ventana1.getMiGrafo().eliminarNodo(func.solicitar_usuario(jTextField1));
         this.setVisible(false);
     }//GEN-LAST:event_AceptarEUActionPerformed
 
+    /**
+     * Evento que permite cancelar la interaccion del usuario y regresar a la
+     * ventana anterior.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void CancelarEUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarEUActionPerformed
         this.dispose();
     }//GEN-LAST:event_CancelarEUActionPerformed
