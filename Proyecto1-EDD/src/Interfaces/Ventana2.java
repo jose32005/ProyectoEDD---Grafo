@@ -8,14 +8,19 @@ import EDD.Grafo;
 
 /**
  *
- * @author evaas
+ * @author G. Angelo, S. Estefania y S. Jose
  */
 public class Ventana2 extends javax.swing.JFrame {
 
     public static Ventana1 v1;
     
     /**
-     * Creates new form Ventana2
+     * Constructor de la clase Ventana2. Inicializa la interfaz gráfica y otras
+     * funcionalidades necesarias para el funcionamiento del programa.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @version: 27/10/2023
+     * @param: Ventana1
      */
     public Ventana2(Ventana1 v1) {
         initComponents();
@@ -106,26 +111,65 @@ public class Ventana2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Manejador de eventos para agregar un usuario. Crea una instancia de la
+     * clase "AgregarUsuario" pero no la muestra en la pantalla.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         AgregarUsuario v = new AgregarUsuario();
         v.setLocationRelativeTo(null);
     }//GEN-LAST:event_AgregarActionPerformed
 
+    /**
+     * Manejador de eventos para eliminar un usuario. Crea una instancia de la
+     * clase "EliminarUsuario" pero no la muestra en la pantalla.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         EliminarUsuario v = new EliminarUsuario();
         v.setLocationRelativeTo(null);
     }//GEN-LAST:event_EliminarActionPerformed
 
+    /**
+     * Manejador de eventos para conectar usuarios. Crea una instancia de la
+     * clase "ConectarUsuarios" pero no la muestra en la pantalla.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void ConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConectarActionPerformed
         ConectarUsuarios v = new ConectarUsuarios();
         v.setLocationRelativeTo(null);
     }//GEN-LAST:event_ConectarActionPerformed
 
+    /**
+     * Manejador de eventos para desconectar usuario. Crea una instancia de la
+     * clase "DesconectarUsuario" pero no la muestra en la pantalla.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void DesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DesconectarActionPerformed
         DesconectarUsuarios v = new DesconectarUsuarios();
         v.setLocationRelativeTo(null);
     }//GEN-LAST:event_DesconectarActionPerformed
 
+    /**
+     * Manejador de eventos para salir de la ventana 2.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void SalirV2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirV2ActionPerformed
         v1.setVisible(true);
         this.dispose();
