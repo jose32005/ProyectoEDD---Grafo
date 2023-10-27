@@ -26,7 +26,12 @@ public class Grafo<T> {
     private int numVertices;
     public Graph graph;
 
-    //Constructor
+    /**
+     * Crea un nuevo grafo vacío. Inicializa un nuevo grafo sin nodos ni
+     * aristas. El grafo se utiliza para representar relaciones entre elementos.
+     * @author G. Angelo, S. Estefania y S. Jose. 
+     * @version: 27/10/2023 
+     */
     public Grafo() {
         this.numVertices = 0;
         this.listaNodos = new Lista<>();
@@ -34,8 +39,14 @@ public class Grafo<T> {
 
     }
 
-    //Metodos
-    // Método para agregar un nodo al grafo
+    /**
+     * Agrega un nuevo nodo al grafo si no existe previamente. En caso de que el
+     * nodo ya existe, muestra un mensaje de advertencia.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @param info La información que se utilizará como identificador del nodo.
+     * @version: 27/10/2023
+     */
     public void agregarNodo(T info) {
         if (!"".equals(info)) {
             Nodo<T> nodoExistente = getListaNodos().obtenerNodo((String) info);
@@ -53,7 +64,15 @@ public class Grafo<T> {
         }
     }
 
-    // Método para eliminar un nodo al grafo
+    /**
+     * Elimina un nodo del grafo si existe y lo desconecta de los nodos con los
+     * que tiene relacion. Si el nodo no existe, muestra un mensaje de
+     * advertencia.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose. 
+     * @param info La información que identifica el nodo a eliminar.  
+     * @version: 27/10/2023 
+     */
     public void eliminarNodo(T info) {
         if (!"".equals(info)) {
             Nodo<T> nodoAEliminar = getListaNodos().obtenerNodo(info);
@@ -82,7 +101,16 @@ public class Grafo<T> {
         }
     }
 
-    // Método para conectar dos nodos en el grafo (agregar arista entre dos nodos)
+    /**
+     * Conecta dos nodos en el grafo si ambos existen y no están ya conectados.
+     * Si uno o ambos nodos no existen o ya están conectados, muestra mensajes
+     * de advertencia.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose. 
+     * @param infoOrigen La información que identifica el nodo origen.
+     * @param infoDestino La información que identifica el nodo destino.
+     * @version: 27/10/2023
+     */
     public void conectarNodos(T infoOrigen, T infoDestino) {
         if (!"".equals(infoDestino) && !"".equals(infoOrigen)) {
             if (infoOrigen.equals(infoDestino)) {
@@ -114,7 +142,16 @@ public class Grafo<T> {
         }
     }
 
-    // Método para desconectar dos nodos en el grafo (eliminar arista entre dos nodos)
+    /**
+     * Desconecta dos nodos en el grafo solo si ambos existen y están
+     * conectados. En caso de que uno o ambos nodos no existan o no están
+     * conectados, muestra mensaje de advertencia.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @param infoOrigen La información que identifica el nodo origen.
+     * @param infoDestino La información que identifica el nodo destino.
+     * @version: 27/10/2023
+     */
     public void desconectarNodos(T infoOrigen, T infoDestino) {
         if (!"".equals(infoDestino) && !"".equals(infoOrigen)) {
             Nodo<T> nodoOrigen = getListaNodos().obtenerNodo(infoOrigen);
@@ -137,12 +174,24 @@ public class Grafo<T> {
         }
     }
 
-    //Metodo que imprime el grafo
+    /**
+     * Muestra la representación gráfica del grafo a través del visualizador de
+     * GraphStream.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose.
+     */
     public void imprimirGrafo() {
         Viewer viewer = graph.display();
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
     }
-
+    
+    /**
+     * Se genera y retorna un color aleatorio
+     *
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @return Color
+     * @version: 27/10/2023
+     */
     public Color getRandomColor() {
         Random random = new Random();
         int red = random.nextInt(256);
@@ -152,7 +201,14 @@ public class Grafo<T> {
     }
 
     // Algoritmo de Kosaraju
-// Creacion del grafo traspuesto 
+    /**
+     * Crea y devuelve un grafo traspuesto a partir del grafo actual.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @return Grafo Un nuevo grafo que es el grafo traspuesto del grafo actual,
+     * donde las direcciones de las aristas se invierten.
+     * @version: 27/10/2023
+     */
     public Grafo<T> Traspuesto() {
         Grafo<T> transpuesto = new Grafo<>();
 
@@ -176,7 +232,16 @@ public class Grafo<T> {
         return transpuesto;
     }
 
-    // Imprimir los sccs
+    /**
+     * Realiza una búsqueda de Componentes Fuertemente Conectados(SCCs) en el
+     * grafo y los representa graficamente. Se utiliza el algoritmo de Kosaraju
+     * para encontrar los SCCs y asigna colores aleatorios a los nodos que
+     * forman el SCCs. Luego, muestra el grafo resultante con los SCCs
+     * coloreados.
+     * 
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @version: 27/10/2023
+     */
     public void obtenerSCCs() {
         graph.setAttribute("ui.stylesheet", "graph { fill-color: oldlace; }");
         System.setProperty("org.graphstream.ui", "swing");
@@ -220,7 +285,22 @@ public class Grafo<T> {
         this.imprimirGrafo();
     }
 
-    //Llena los SCC con DFS
+    /**
+     * Llena un Componente Fuertemente Conectado(SCC) a partir de un nodo dado
+     * en el grafo traspuesto. Este método realiza un recorrido en profundidad a
+     * través del grafo traspuesto para identificar todos los nodos que
+     * pertenecen al mismo SCC y los agrega a la lista de SCC actual.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @param nodo El nodo a partir del cual se inicia el recorrido DFS.
+     * @param visitados Un conjunto que realiza un seguimiento de los nodos
+     * visitados.
+     * @param sccActual Una lista que representa el SCC actual y se llenará con
+     * los nodos del SCC.
+     * @param traspuesto El grafo traspuesto sobre el cual se realiza el
+     * recorrido DFS.
+     * @version: 27/10/2023
+     */
     public void llenarSCC(Nodo<T> nodo, Conjunto<T> visitados, Lista<T> sccActual, Grafo<T> traspuesto) {
         visitados.insertar(nodo.gettInfo());
         sccActual.insertar(nodo.gettInfo());
@@ -238,7 +318,19 @@ public class Grafo<T> {
         }
     }
 
-    //Crea el orden del la Pila y el conjunto inicial
+    /**
+     * Llena una pila con los nodos del grafo en el orden en que se visitan
+     * durante un recorrido en profundidad. Este método inicia el recorrido en
+     * profundidad desde un nodo dado y agrega los nodos a la pila en el orden
+     * en que se visitan.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @param nodo El nodo a partir del cual se inicia el recorrido DFS.
+     * @param visitados Un conjunto que realiza un seguimiento de los nodos
+     * visitados.
+     * @param pila La pila que se llenará con los nodos en el orden de visita.
+     * @version: 27/10/2023
+     */
     public void llenarOrden(Nodo<T> nodo, Conjunto<T> visitados, Pila<T> pila) {
         visitados.insertar(nodo.gettInfo());
         Lista<T> adyacentes = nodo.getAdyacentes();
@@ -257,7 +349,15 @@ public class Grafo<T> {
         pila.apilar(nodo.gettInfo());
     }
 
-    // Método para buscar un nodo en el grafo basado en su información
+    /**
+     * Busca y devuelve el nodo con la información especificada en el grafo.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @param info La información que se busca en el nodo.
+     * @return El nodo con la información correspondiente, o null si no se
+     * encuentra en el grafo.
+     * @version: 27/10/2023
+     */
     public Nodo<T> buscarNodo(T info) {
         Nodo<T> nodoActual = this.listaNodos.getpPrim();
         while (nodoActual != null) {
@@ -268,7 +368,17 @@ public class Grafo<T> {
         }
         return null; // Retorna null si no encuentra el nodo
     }
-
+    
+    /**
+     * Lee información desde un archivo de texto y utiliza esa información para
+     * llenar el grafo. El archivo debe contener una lista de usuarios y sus
+     * relaciones. El método procesa el archivo y agrega nodos al grafo
+     * representando a los usuarios, así como aristas representando las
+     * relaciones entre ellos.
+     * 
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @version: 27/10/2023
+     */
     public void llenar_grafo() {
         String line;
         String usuarios_txt = "";
@@ -317,6 +427,14 @@ public class Grafo<T> {
         }
     }
 
+    /**
+     * Establece un color inicial en todos los nodos del grafo. Este método
+     * asigna un color predefinido a todos los nodos del grafo para su
+     * visualización inicial.
+     * 
+     * @author G. Angelo, S. Estefania y S. Jose.
+     * @version: 27/10/2023
+     */
     public void colorInicial() {
         Nodo<T> pAux = this.listaNodos.getpPrim();
         while (pAux != null) {
@@ -328,28 +446,36 @@ public class Grafo<T> {
 
     // Gets and Sets
     /**
+     * @author G. Angelo, S. Estefania y S. Jose.
      * @return the listaNodos
+     * @version: 27/10/2023
      */
     public Lista<T> getListaNodos() {
         return listaNodos;
     }
 
     /**
+     * @author G. Angelo, S. Estefania y S. Jose.
      * @param listaNodos the listaNodos to set
+     * @version: 27/10/2023
      */
     public void setListaNodos(Lista<T> listaNodos) {
         this.listaNodos = listaNodos;
     }
 
     /**
+     * @author G. Angelo, S. Estefania y S. Jose.
      * @return the numVertices
+     * @version: 27/10/2023
      */
     public int getNumVertices() {
         return numVertices;
     }
 
     /**
+     * @author G. Angelo, S. Estefania y S. Jose.
      * @param numVertices the numVertices to set
+     * @version: 27/10/2023
      */
     public void setNumVertices(int numVertices) {
         this.numVertices = numVertices;
