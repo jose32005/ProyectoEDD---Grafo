@@ -8,14 +8,18 @@ import Extras.Funciones;
 
 /**
  *
- * @author joses
+ * @author G. Angelo, S. Estefania y S. Jose
  */
 public class AgregarUsuario extends javax.swing.JFrame {
 
     public Funciones func;
 
     /**
-     * Creates new form Ventana3
+     * Constructor de la clase AgregarUsuario. Inicializa la interfaz gráfica y
+     * otras funcionalidades necesarias para agregar un usuario.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @version: 27/10/2023
      */
     public AgregarUsuario() {
         initComponents();
@@ -81,15 +85,38 @@ public class AgregarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Campo de texto que captura la informacion del nuevo usuario.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    /**
+     * Manejador de eventos para el botón "Aceptar". Agrega un nuevo nodo
+     * (usuario) al grafo y oculta la ventana actual.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         Ventana1.getMiGrafo().agregarNodo(func.solicitar_usuario(jTextField1));
         this.setVisible(false);
     }//GEN-LAST:event_AceptarActionPerformed
 
+    /**
+     * Evento que permite cancelar la interaccion del usuario y regresar a la
+     * ventana anterior.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
