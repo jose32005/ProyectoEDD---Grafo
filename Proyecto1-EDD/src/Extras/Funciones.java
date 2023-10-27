@@ -27,12 +27,19 @@ import javax.swing.text.BadLocationException;
  */
 /**
  *
- * @author joses
+ * @author G. Angelo, S. Estefania y S. Jose
  *
  */
 public class Funciones {
 
     // JFileChooser
+    /**
+     * Abre y carga el contenido de un archivo de texto seleccionado por el
+     * usuario. Se lee su contenido y se carga en la aplicación.
+     * 
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @version: 27/10/2023
+     */
     public void abrir_archivo() {
         String aux = "";
         String texto = "";
@@ -83,6 +90,13 @@ public class Funciones {
         }
     }
 
+    /**
+     * Guarda el contenido del grafo en un archivo de texto.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param grafo Se guarada el contenido del grafo en un archivo de texto.
+     * @version: 27/10/2023
+     */
     public void guardar_archivo(Grafo grafo) {
         try {
             Component FileChooser = null;
@@ -135,7 +149,16 @@ public class Funciones {
                     "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }
-    
+
+    /**
+     * Solicita y valida un nombre de usuario ingresado en un campo de texto.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param texto El campo de texto que contiene el nombre de usuario
+     * ingresado.
+     * @return El nombre de usuario validado o una cadena vacía si es inválido.
+     * @version: 27/10/2023
+     */
     public String solicitar_usuario(JTextField texto){
         String textoTemp = texto.getText();
         if (!"".equals(textoTemp)){
