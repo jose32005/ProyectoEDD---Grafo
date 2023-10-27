@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author evaas
+ * @author G. Angelo, S. Estefania y S. Jose
  */
 public class Ventana1 extends javax.swing.JFrame {
 
@@ -21,7 +21,14 @@ public class Ventana1 extends javax.swing.JFrame {
      */
     static Grafo miGrafo;
     private static Funciones func;
-
+    
+    /**
+     * Constructor de la clase Ventana1. Inicializa la interfaz gráfica y otras
+     * funcionalidades necesarias para el funcionamiento del programa.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @version: 27/10/2023
+     */
     public Ventana1() throws FileNotFoundException {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -122,10 +129,25 @@ public class Ventana1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Evento que permite salir del programa (cierre de la aplicación)
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
 
+    /**
+     * Evento que permite visualizar las relaciones fuertemente conectadas del
+     * grafo.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void MostrarSCCsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarSCCsActionPerformed
         if (Ventana1.getMiGrafo().getNumVertices() != 0) {
             Ventana1.getMiGrafo().obtenerSCCs();
@@ -134,18 +156,37 @@ public class Ventana1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MostrarSCCsActionPerformed
 
-
+    /**
+     * Evento que permite modificar el grafo.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
         Ventana2 v2 = new Ventana2(this);
         this.setVisible(false);
     }//GEN-LAST:event_ModificarGrafoActionPerformed
 
+    /**
+     * Manejador de eventos para cambiar el archivo en uso.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void CambiarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarArchivoActionPerformed
         Aviso aviso1 = new Aviso();
         aviso1.setLocationRelativeTo(null);
         aviso1.setVisible(true);
     }//GEN-LAST:event_CambiarArchivoActionPerformed
 
+    /**
+     * Evento que permite visualizar las relaciones que presenta el grafo.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
         if (Ventana1.getMiGrafo().getNumVertices() != 0) {
             Ventana1.getMiGrafo().colorInicial();
@@ -156,6 +197,14 @@ public class Ventana1 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_MostrarGrafoActionPerformed
 
+    /**
+     * Evento que permite actualizar el archivo de texto, guardando los cambios
+     * que se han realizado en el programa.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void ActualizarRepositorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarRepositorioActionPerformed
         System.out.println("Falta agregar advertencia al usuario + if");
         getFunc().guardar_archivo(getMiGrafo());
