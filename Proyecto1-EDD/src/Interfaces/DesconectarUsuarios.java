@@ -8,14 +8,18 @@ import Extras.Funciones;
 
 /**
  *
- * @author joses
+ * @author G. Angelo, S. Estefania y S. Jose
  */
 public class DesconectarUsuarios extends javax.swing.JFrame {
 
     public Funciones func;
 
     /**
-     * Creates new form Ventana3
+     * Constructor de la clase DesconectarUsuarios. Inicializa la interfaz
+     * gráfica y otras funcionalidades necesarias para desconectar un usuario.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @version: 27/10/2023
      */
     public DesconectarUsuarios() {
         initComponents();
@@ -106,19 +110,49 @@ public class DesconectarUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Campo de texto donde se debe colocar el usuario origen.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    /**
+     * Manejador de eventos para el botón "Aceptar". Desconecta dos nodos en el
+     * grafo utilizando los usuarios ingresados en los campos de texto y luego
+     * oculta la ventana actual.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void AceptarDUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarDUActionPerformed
         Ventana1.getMiGrafo().desconectarNodos(func.solicitar_usuario(jTextField1), func.solicitar_usuario(jTextField2));
         this.setVisible(false);
     }//GEN-LAST:event_AceptarDUActionPerformed
 
+    /**
+     * Evento que permite cancelar la interaccion del usuario y regresar a la
+     * ventana anterior.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void CancelarDUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarDUActionPerformed
         this.dispose();
     }//GEN-LAST:event_CancelarDUActionPerformed
 
+    /**
+     * Campo de texto donde se debe colocar el usuario destino.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
