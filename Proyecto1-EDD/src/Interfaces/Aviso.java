@@ -9,12 +9,15 @@ import static Interfaces.Ventana1.getMiGrafo;
 
 /**
  *
- * @author evaas
+ * @author G. Angelo, S. Estefania y S. Jose
  */
 public class Aviso extends javax.swing.JFrame {
 
     /**
-     * Creates new form Aviso
+     * Constructor de la clase Aviso. Inicializa la interfaz gráfica.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @version: 27/10/2023
      */
     public Aviso() {
         initComponents();
@@ -66,10 +69,26 @@ public class Aviso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Evento que permite cancelar la interaccion del usuario y regresar a la
+     * ventana anterior.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     * @version: 27/10/2023
+     */
     private void CancelarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarMActionPerformed
         this.dispose();
     }//GEN-LAST:event_CancelarMActionPerformed
 
+    /**
+     * Manejador de eventos para el botón "Aceptar". Cierra la ventana actual,
+     * abre un archivo, crea un nuevo grafo y lo llena con datos desde el
+     * archivo.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void AceptarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarMActionPerformed
         this.dispose();
         Ventana1.getFunc().abrir_archivo();
