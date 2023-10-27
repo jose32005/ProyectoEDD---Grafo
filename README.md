@@ -13,6 +13,7 @@
 
 **NOTA 1**: Si hay problemas con la ejecucion del programa verificar que el archivo .txt que se cargo cumpla con el mismo formato que el de las instrucciones del proyecto
 **NOTA 2**: Al actualizar el repositorio se guardaran los datos del programa en su estado actual para la siguiente ejecucion y permitira guardar una copia de los mismos en un nuevo archivo.
+**NOTA 3**: Los pasos 4-9 no deben ejecutarse si ya el programa cargó automáticamente las librerias
 
 
 ![Diagrama UML drawio](https://github.com/jose32005/ProyectoEDD---Grafo/assets/129181491/a4409741-e8d9-436e-a9de-61389e29682f)
