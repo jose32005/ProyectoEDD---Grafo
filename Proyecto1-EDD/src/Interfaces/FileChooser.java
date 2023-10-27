@@ -6,12 +6,15 @@ package Interfaces;
 
 /**
  *
- * @author joses
+ * @author G. Angelo, S. Estefania y S. Jose
  */
 public class FileChooser extends javax.swing.JPanel {
 
     /**
-     * Creates new form FileChooser
+     * Constructor de la clase FileChooser.
+     *
+     * @author G. Angelo, S. Estefania y S. Jose
+     * @version: 27/10/2023
      */
     public FileChooser() {
         initComponents();
