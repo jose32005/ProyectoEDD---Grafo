@@ -17,11 +17,14 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
+    
+        private void iniciarPrograma(){
+            Ventana1 ventana = new Ventana1();
+            ventana.setLocationRelativeTo(null);
+            ventana.setVisible(true);
+        }
         
-        Ventana1 ventana = new Ventana1();
-        ventana.setLocationRelativeTo(null);
-        ventana.setVisible(true);
-        
+        this.iniciarPrograma();
     }
     
     
